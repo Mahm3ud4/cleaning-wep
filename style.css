@@ -1,10 +1,11 @@
-/* تنسيقات عامة (أساسية) */
+/* تنسيقات عامة (أساسية) - تم تحديث المتغيرات */
 :root {
-    --primary-color: #007bff; /* أزرق داكن/أساسي */
+    --primary-color: #0056b3; /* أزرق أغمق ليبرز أكثر */
     --secondary-color: #4CAF50; /* أخضر للنجاح والضمان */
     --text-color: #333;
     --light-bg: #f8f9fa;
-    --dark-bg: #2c3e50; /* لون غامق للعناوين أو الفوتر */
+    --dark-bg: #2c3e50;
+    --accent-color: #ffc107; /* لون مميز جديد للنجوم والتنبيهات */
 }
 
 * {
@@ -14,12 +15,13 @@
 }
 
 body {
-    font-family: 'Cairo', sans-serif;
+    /* إضافة خط احتياطي لتحسين الدعم العربي */
+    font-family: 'Cairo', 'Tajawal', sans-serif; 
     color: var(--text-color);
     line-height: 1.6;
     direction: rtl; /* لضمان الاتجاه الصحيح للغة العربية */
     background-color: #fff;
-    overflow-x: hidden;
+    /* تم إزالة overflow-x: hidden لتجنب مشاكل التمرير */
 }
 
 .container {
@@ -33,31 +35,34 @@ body {
     padding: 80px 0;
 }
 
+/* تحسين تنسيق عنوان القسم */
 .section-title {
     text-align: center;
-    font-size: 2.5em;
-    font-weight: 700;
+    font-size: 2.8em; 
+    font-weight: 800; 
     color: var(--dark-bg);
-    margin-bottom: 50px;
+    margin-bottom: 60px; /* زيادة الهامش السفلي */
     position: relative;
+    text-transform: capitalize;
 }
 
 .section-title::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 4px;
+    width: 80px; /* زيادة عرض الخط السفلي */
+    height: 5px; /* زيادة سمك الخط السفلي */
     background-color: var(--secondary-color);
-    margin: 10px auto 0;
-    border-radius: 2px;
+    margin: 15px auto 0;
+    border-radius: 3px;
+    opacity: 0.8;
 }
 
-/* --- رأس الصفحة (Header & Navigation) --- */
+/* --- رأس الصفحة (Header & Navigation) - تم التعديل ليناسب RTL --- */
 header {
     background-color: var(--dark-bg);
     color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0; /* تقليل البادينج قليلاً */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* تعميق الظل */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -87,7 +92,8 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 25px;
+    margin-left: 25px; /* تم التعديل من right إلى left لـ RTL */
+    margin-right: 0;
 }
 
 nav ul li a {
@@ -117,9 +123,10 @@ nav ul li a.active::after {
 
 .btn-contact {
     background-color: var(--secondary-color) !important;
-    padding: 8px 18px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 10px 20px; /* زيادة حجم الزر */
+    border-radius: 7px; /* زيادة انحناء الحواف */
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .btn-contact:hover {
@@ -130,7 +137,7 @@ nav ul li a.active::after {
 /* --- قسم البطل (Hero Section) --- */
 .hero {
     background: url('images/hero.jpg') center/cover no-repeat;
-    height: 80vh;
+    min-height: 80vh; /* تم التعديل إلى min-height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,7 +153,7 @@ nav ul li a.active::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* طبقة تظليل */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .hero-content {
@@ -157,9 +164,10 @@ nav ul li a.active::after {
 }
 
 .hero-content h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 3.5em; /* زيادة الحجم */
+    margin-bottom: 25px;
     font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content p {
@@ -178,6 +186,7 @@ nav ul li a.active::after {
     font-size: 1.2em;
     font-weight: 700;
     transition: background-color 0.3s, transform 0.3s;
+    letter-spacing: 0.5px;
 }
 
 .cta-button:hover {
@@ -190,7 +199,7 @@ nav ul li a.active::after {
     font-size: 1.4em;
 }
 
-/* --- قسم الخدمات (Services Section) --- */
+/* --- قسم الخدمات (Services Section) - إضافة خط تمييز --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -202,13 +211,15 @@ nav ul li a.active::after {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, border-top 0.3s;
     text-align: right;
+    border-top: 5px solid var(--primary-color);
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    border-top-color: var(--secondary-color);
 }
 
 .service-card img {
@@ -222,6 +233,7 @@ nav ul li a.active::after {
     padding: 20px 20px 10px;
     font-size: 1.5em;
     color: var(--primary-color);
+    min-height: 70px; /* ضمان ارتفاع موحد */
 }
 
 .service-card h3 i {
@@ -260,7 +272,8 @@ nav ul li a.active::after {
 
 .service-details ul li i {
     color: var(--secondary-color);
-    margin-left: 8px;
+    margin-left: 10px;
+    font-size: 1em;
 }
 
 .details-link {
@@ -275,7 +288,7 @@ nav ul li a.active::after {
     color: var(--secondary-color);
 }
 
-/* --- قسم لماذا نحن الأفضل (About Section) --- */
+/* --- قسم لماذا نحن الأفضل (About Section) - تعديل لشبكة الأقسام --- */
 .about-section {
     background-color: var(--dark-bg);
     color: white;
@@ -291,17 +304,26 @@ nav ul li a.active::after {
 
 .about-section ul {
     list-style: none;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
 }
 
 .about-section ul li {
     background: rgba(255, 255, 255, 0.1);
-    margin-bottom: 15px;
+    margin-bottom: 0; 
     padding: 15px;
     border-radius: 8px;
     font-size: 1.1em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s;
+}
+
+.about-section ul li:hover {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .about-section ul li i {
@@ -314,7 +336,7 @@ nav ul li a.active::after {
 /* --- تنسيق قسم أرقامنا تتحدث (Stats Section) --- */
 /* ------------------------------------- */
 .stats-section {
-    background-color: var(--light-bg); /* خلفية فاتحة */
+    background-color: var(--light-bg); 
     text-align: center;
 }
 
@@ -338,29 +360,27 @@ nav ul li a.active::after {
 }
 
 .stat-number {
-    font-size: 3em; /* حجم كبير للرقم */
+    font-size: 3em; 
     font-weight: 700;
-    color: var(--secondary-color); /* اللون الأخضر المميز */
+    color: var(--secondary-color); 
     line-height: 1.2;
     margin-bottom: 5px;
-    /* التأكيد على تنسيق الأرقام التي ستعد */
     display: block; 
-    overflow: hidden; /* لمنع ظهور أي بقايا أثناء العد */
+    overflow: hidden; 
 }
 
 .stat-label {
     font-size: 1.1em;
     font-weight: 600;
-    color: var(--dark-bg); /* لون غامق للنص */
+    color: var(--dark-bg); 
 }
 /* ------------------------------------- */
 
 /* ------------------------------------- */
-/* --- قسم العملاء المستهدفين (Target Clients) - تم تعديله --- */
+/* --- قسم العملاء المستهدفين (Target Clients) - تعديل الـ Hover --- */
 /* ------------------------------------- */
 .clients-grid {
     display: grid;
-    /* التعديل: دائماً 4 أعمدة في الشاشات الكبيرة */
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
 }
@@ -370,13 +390,14 @@ nav ul li a.active::after {
     padding: 30px 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: all 0.4s ease; /* transition شامل */
 }
 
 .client-card:hover {
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
     color: white;
+    transform: translateY(-5px);
 }
 
 .client-card i {
@@ -400,7 +421,7 @@ nav ul li a.active::after {
 }
 /* ------------------------------------- */
 
-/* --- قسم آراء العملاء (Reviews) --- */
+/* --- قسم آراء العملاء (Reviews) - إضافة تنسيق التقييم --- */
 .reviews-section {
     background-color: var(--light-bg);
     padding: 80px 0;
@@ -416,12 +437,23 @@ nav ul li a.active::after {
 .review-card {
     background: white;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 10px 50px 10px 10px; /* شكل مميز */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     max-width: 45%;
     flex-grow: 1;
     text-align: right;
     border-right: 5px solid var(--secondary-color);
+}
+
+/* تنسيق نجوم التقييم */
+.review-card .rating {
+    color: var(--accent-color); 
+    margin-bottom: 10px;
+    display: block;
+}
+
+.review-card .rating i {
+    margin-left: 2px;
 }
 
 .review-card .quote {
@@ -444,7 +476,7 @@ nav ul li a.active::after {
     margin-top: 10px;
 }
 
-/* --- قسم الأسئلة الشائعة (FAQ) --- */
+/* --- قسم الأسئلة الشائعة (FAQ) - تحسين الوضوح والتفاعل --- */
 .faq-accordion {
     max-width: 900px;
     margin: 0 auto;
@@ -467,6 +499,7 @@ nav ul li a.active::after {
     text-align: right;
     outline: none;
     font-size: 1.1em;
+    font-weight: 700;
     transition: background-color 0.4s;
     display: flex;
     justify-content: space-between;
@@ -479,6 +512,7 @@ nav ul li a.active::after {
 
 .faq-question i {
     transition: transform 0.3s;
+    font-size: 0.9em;
 }
 
 .faq-question.active i {
@@ -503,7 +537,7 @@ nav ul li a.active::after {
 footer {
     background-color: var(--dark-bg);
     color: white;
-    padding: 60px 0 20px;
+    padding: 60px 0 0; /* تم إزالة البادينج السفلي الزائد */
     text-align: center;
 }
 
@@ -531,23 +565,22 @@ footer h2 {
     max-width: 600px;
     margin: 0 auto 50px;
     padding: 30px;
-    background: #34495e; /* خلفية أغمق للنموذج */
+    background: #34495e; 
     border-radius: 10px;
     text-align: right;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="tel"],
-.contact-form input[type="email"],
+.contact-form input:not([type="submit"]),
 .contact-form select,
 .contact-form textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #555;
+    border: 1px solid #ccc; /* تعديل لون الحدود */
     background-color: #f8f8f8;
-    color: var(--text-color);
+    color: var(--dark-bg); /* تعديل لون النص */
     font-family: 'Cairo', sans-serif;
     font-size: 1em;
 }
@@ -566,6 +599,7 @@ footer h2 {
     margin-top: 10px;
     border: none;
     cursor: pointer;
+    font-weight: 700;
 }
 
 .form-note {
@@ -580,6 +614,7 @@ footer h2 {
     flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 40px;
+    margin-top: 30px;
 }
 
 .contact-item {
@@ -599,21 +634,22 @@ footer h2 {
     text-decoration: none;
     font-size: 1.1em;
     transition: color 0.3s;
-    cursor: pointer; /* للحفاظ على تنسيق موحد مع الروابط */
+    cursor: pointer; 
 }
 
 .contact-item a:hover {
     color: var(--secondary-color);
 }
-/* تنسيق خاص لأيقونة انستجرام لتكون متميزة قليلاً */
+
 .contact-item .fa-instagram {
-    color: #E1306C; /* لون انستجرام الرسمي */
+    color: #E1306C; 
 }
 
 
 .copyright {
     font-size: 0.9em;
     color: #aaa;
+    padding-bottom: 20px; /* لإعادة البادينج السفلي للفوتر */
 }
 
 /* --- أزرار الإجراءات العائمة (Floating CTAs) --- */
@@ -664,29 +700,42 @@ footer h2 {
     transform: scale(1.1);
 }
 
-/* --- استجابة تصميم (Media Queries) --- */
+/* --- استجابة تصميم (Media Queries) - تعديلات التجاوب النهائية --- */
 @media (max-width: 992px) {
+    /* تصغير العناوين قليلاً */
+    .section-title {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+    }
+
     header .container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    nav {
+        order: 2; /* وضع القائمة أسفل الشعار والأزرار في حال عدم كفاية المساحة */
+        flex-basis: 100%;
+        margin-top: 10px;
     }
 
     nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 15px;
+        justify-content: space-around;
+        margin: 0;
     }
 
     nav ul li {
         margin: 5px 10px;
+        margin-right: 0; /* إلغاء الهامش الأيمن الذي قد يكون موروثًا */
     }
 
     .hero {
-        height: 60vh;
+        min-height: 60vh; /* تم التعديل */
     }
 
     .hero-content h2 {
-        font-size: 2.2em;
+        font-size: 2.5em;
     }
     
     .reviews-grid {
@@ -705,19 +754,46 @@ footer h2 {
 
 @media (max-width: 600px) {
     .section-title {
-        font-size: 2em;
-    }
-    
-    .hero-content h2 {
         font-size: 1.8em;
     }
     
-    .stats-grid {
-        grid-template-columns: 1fr 1fr; /* عرض عمودين في الهواتف */
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    
+    .cta-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+    
+    header .container {
+        flex-direction: column;
+    }
+    
+    nav {
+        order: 2;
+        flex-basis: 100%;
     }
 
-    .stat-number {
-        font-size: 2.5em;
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 10px;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+        text-align: center;
+    }
+    
+    /* عرض عمود واحد في الهواتف */
+    .services-grid,
+    .stats-grid {
+        grid-template-columns: 1fr; 
     }
     
     .floating-cta {
